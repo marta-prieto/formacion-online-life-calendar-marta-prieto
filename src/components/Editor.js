@@ -66,10 +66,6 @@ class Editor extends React.Component {
     });
   }
 
-  getBack(event) {
-    event.preventDefault();
-    this.saveData = true;
-  }
 
   getClick(event) {
     event.preventDefault();
@@ -89,8 +85,11 @@ class Editor extends React.Component {
       );
     }
     return (
+      <div className="form__container">
       <form className="form" id="idForm">
-        <label htmlFor="date">Fecha</label>
+
+        <label className="title__date" htmlFor="date">Fecha</label>
+        <div className="date__container">
         <input
           id="date"
           type="date"
@@ -99,29 +98,32 @@ class Editor extends React.Component {
           value={date}
           placeholder="date"
         />
+        </div>
         <fieldset className="mood__emotic-form">Estado
-        <div className="happy__container"></div>
-          <label className="happy__emotic-form" htmlFor="happy"> {":)"} </label>
+        
+
           <input
             id="happy"
-            className="Emotic_happy"
+            className="emotic__happy"
             onChange={this.getEmotic}
             value=":)"
             type="checkbox"
             checked={emotic}
           />
-          <label htmlFor="sad"> {":("} </label>
+          <label className="happy__emotic-form" htmlFor="happy"> {":)"} </label>
+
           <input
             id="sad"
-            className="Emotic_sad"
+            className="emotic__sad"
             onChange={this.getEmotic}
             type="checkbox"
             value=":("
             checked={emotic}
           />
+          <label htmlFor="sad"> {":("} </label>
         </fieldset>
 
-        <label htmlFor="message">
+        <label className={this.state.editor.emotic === ":)" ? "" : "hidden"} htmlFor="message">
           Mensaje
             <input
             id="message"
@@ -132,14 +134,17 @@ class Editor extends React.Component {
             placeholder="Hoy es un buen día porque..."
           />
         </label>
+        <div className="save__container">
         <button className="save__button" onClick={this.getClick}>
           Guardar
         </button>
+        </div>
         <Link to="/" className="cancel">
           <button className="cancel__button">Cancelar</button>
         </Link>
 
       </form>
+      </div>
     );
   }
 }

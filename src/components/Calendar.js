@@ -19,7 +19,7 @@ const Calendar = props => {
 };
 
 Calendar.propTypes = {
-  editor: PropTypes.object.isRequired,
+  editor: PropTypes.object,
 };
 
 export default Calendar;
