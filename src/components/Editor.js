@@ -99,9 +99,9 @@ class Editor extends React.Component {
           value={date}
           placeholder="date"
         />
-        <form className="mood__emotic-form">Estado
+        <fieldset className="mood__emotic-form">Estado
         <div className="happy__container"></div>
-          <label className="happy__emotic-form" htmlFor="happy"> :) </label>
+          <label className="happy__emotic-form" htmlFor="happy"> {":)"} </label>
           <input
             id="happy"
             className="Emotic_happy"
@@ -110,7 +110,7 @@ class Editor extends React.Component {
             type="checkbox"
             checked={emotic}
           />
-          <label htmlFor="sad"> :( </label>
+          <label htmlFor="sad"> {":("} </label>
           <input
             id="sad"
             className="Emotic_sad"
@@ -119,13 +119,14 @@ class Editor extends React.Component {
             value=":("
             checked={emotic}
           />
-        </form>
+        </fieldset>
 
         <label htmlFor="message">
           Mensaje
             <input
             id="message"
             type="text"
+            className={this.state.editor.emotic === ":)" ? "" : "hidden"}
             onChange={this.writeMessage}
             value={message}
             placeholder="Hoy es un buen día porque..."
